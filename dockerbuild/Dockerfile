@@ -30,8 +30,8 @@ RUN dnf update -y && \
     dnf install -y wget git automake libtool autoconf gnutls epel-release make \
                    gcc gcc-c++ gettext gnutls-devel  gettext-devel kernel-headers-$(uname -r) \
                    kernel-devel-$(uname -r) kernel-modules-$(uname -r) \
-                   openssl-devel bison flex ncurses-devel elfutils-libelf-devel bc diffutils \
-                   groupinstall 'Development Tools' openssl-devel python3
+                   openssl-devel bison flex ncurses-devel elfutils-libelf-devel bc diffutils python3 && \
+                   dnf groupinstall -y 'Development Tools'
 
 RUN OS_VER=$( grep -E '^(VERSION)=' /etc/os-release ) && \
     if [[ $OS_VER == *"Green Obsidian"* ]]; then \
